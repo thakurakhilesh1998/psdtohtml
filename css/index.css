@@ -136,36 +136,51 @@
 {
     position: absolute;
     text-align: center;
-    left: 45%;
-    top: 30%;
-    background-color: rgb(229, 122, 24,0.5);
+    left: 0;
+    right: 0;
+    top: 20%;
     padding: 0.6rem;
     box-sizing: border-box;
-    color: white;
+    color: #1FC113;
 }
 #first
 {
     font-size: 0.8rem;
     font-weight: 300;
+    text-transform: uppercase;
     font-family: sans-serif;
 
 }
 #second
 {
     margin-top: 4px;
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 1;
     font-weight: 700;
     font-family: sans-serif;
 }
 #third
 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
     line-height: 1;
     font-family: sans-serif;
 }
-
+@media screen and (max-width: 770px) {
+    #first
+    {
+        font-size: 0.6rem;
+    }
+    #second
+    {
+        font-size: 3rem;
+    }
+    #third
+    {
+        font-size: 1.5rem;
+    }
+  }
+/* End of banner */
 .tally-conatiner
 {
     display: flex;
