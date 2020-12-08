@@ -730,6 +730,19 @@
     padding: 1.5rem 0;
 
 }
+
+@media screen and (max-width:750px)
+{
+    .partners
+    {
+        flex-direction: column;
+    }
+
+    .partners img
+    {
+        margin-top: 0.6rem;
+    }
+}
 /* End of Partner */
 
 /* Footer */
