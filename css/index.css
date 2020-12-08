@@ -1,0 +1,668 @@
+
+/* orange color:#E57A18 */
+/* green:#1FC113 */
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.contact-us span img
+{
+    font-size: 1.3rem;
+    color:black;
+}
+
+.contact-us 
+{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.contact-us .line
+{
+    color: gray;
+    margin: 0.3rem 0;
+}
+
+
+#pay-btn
+{
+    background-color:#1FC113;
+    color: white;
+    padding: 0.4rem 0.6rem;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+#pay-btn i
+{
+    margin-left: 12px;
+}
+
+#contact-icons a 
+{
+    text-decoration: none;
+}
+#contact-icons a i
+{ 
+    color: gray;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-left: 16px;
+}
+
+/* Start of header section */
+.top-navbar
+{
+    background-color:#E57A18!important;
+    
+}
+.nav-bar
+{
+    background-color:#E57A18!important;
+    margin: 0!important;
+    padding: 0!important;
+    color: white!important;
+
+}
+
+.navbar-container
+{
+    margin: 0 auto;
+}
+
+.navbar-container li a
+{
+    color: white!important;
+    margin-left: 1.6rem;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Start of banner */
+.banner
+{
+    margin:0!important;
+    padding: 0!important;
+    position: relative;
+}
+.banner img
+{
+    width: 100%;
+    height: 400px;
+}
+
+.banner-text
+{
+    position: absolute;
+    text-align: center;
+    left: 45%;
+    top: 30%;
+    background-color: rgb(229, 122, 24,0.5);
+    padding: 0.6rem;
+    box-sizing: border-box;
+    color: white;
+}
+#first
+{
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-family: sans-serif;
+
+}
+#second
+{
+    margin-top: 4px;
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 700;
+    font-family: sans-serif;
+}
+#third
+{
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1;
+    font-family: sans-serif;
+}
+
+.tally-conatiner
+{
+    display: flex;
+    justify-content: center;
+
+}
+
+.tally-first
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.tally-first .head
+{
+    font-size: 2rem;
+    font-weight: 700;
+
+}
+.tally-first .arrow
+{
+    
+    color: gray;
+}
+.tally
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:0;
+    padding: 0 3.6rem;
+    box-sizing: border-box;
+    border-right: 1px solid gray;
+
+}
+
+.tally .t-main
+{
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+.tally .t-sub
+{
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 0.8;
+}
+/* End of banner */
+
+/* Announcemnet */
+.announ
+{
+    background-color:#1FC113;
+    box-sizing: border-box;
+    padding:1rem 0;
+    margin: 1rem auto;
+
+}
+.announ h4
+{
+    text-align: center;
+    color: white;
+}
+
+.card-announce
+{
+    background-color: white;
+    box-sizing: border-box;
+    padding:1rem;
+    border-radius: 4px;
+}
+
+.card-announce .date
+{
+    background-color: lightblue;
+    color: black;
+    box-sizing: border-box;
+    padding-left: 12px;
+    font-weight: 550;
+    font-size: 15px;
+    font-family: sans-serif;
+    border-radius: 8px;
+}
+.card-announce p
+{
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+/* End of Announcemnet*/
+
+/* Start of courser */
+.course h4
+{
+    font-family: sans-serif;
+    margin-top: 20px;
+}
+.course-col img
+{
+    width: 100%;
+    height: 400px;
+}
+
+.c-name
+{
+    position: relative;
+    box-sizing: border-box;
+}
+.c-name .c-heading
+{
+    position: absolute;
+    color: white;
+    background-color:#E57A18;
+    padding: 0.4rem;
+    padding-left: 1.2rem;
+    top: 1rem;
+    left: 1rem;
+}
+.c-card
+{
+    position: absolute;
+    display: flex;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem; 
+    margin:0 1.6rem;
+    color: black;
+ }
+ .c-card span
+ {
+     background-color: #E57A18;
+     color: white;
+ }
+ .c-card-img img
+ {
+     width: 40px;
+     height: 40px;
+     text-align: center; 
+ }
+ .c-card-img
+ {
+    background-color: #E57A18;
+    width: 40%!important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+ }
+ .c-card-content
+ {
+     background-color: white;
+     padding: 0.6rem;
+     box-sizing: border-box;
+ }
+ .c-card-content h5
+ {
+    line-height: 0.8;
+    font-weight: 700;
+ }
+
+ .c-card-content p
+ {
+     line-height: 1.2;
+     font-weight: 500;
+ }
+/* End of Course */
+
+/* About Section */
+.about
+{
+    margin-top: 4rem!important;
+}
+.about-details 
+{
+    padding: 2.2rem 1rem;
+    box-sizing: border-box;
+}
+
+.about-details span
+{
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.about-details h2
+{
+    font-size: 4rem;
+    font-weight: 700;
+    color: black;
+    margin-top: 1rem;
+    line-height: 0.9;
+}
+
+.about-details p
+{
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    font-family: sans-serif;
+}
+.about-details a
+{
+    margin-top: 1rem;
+    padding-bottom :0.2rem;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 550;
+    font-family: sans-serif;
+    border-bottom: 4px solid #1FC113;
+}
+
+.about-details a:hover
+{
+    text-decoration: none;
+}
+
+/* End of About Section */
+
+/* Start of News Section */
+
+.news-heading
+{
+    display: flex;
+    justify-content: space-between;
+}
+.news-heading h4
+{   
+    font-size: 2rem;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.news-heading select
+{
+    border: none;
+    font-size: 1.2rem;
+}
+.news-card
+{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 0.5px solid gray;
+    padding-bottom: 1rem;
+    padding-top: 1.4rem;
+}
+.news-card-i
+{
+    position: relative;
+    text-align: center;
+}
+.news-card-i img
+{
+    width: 140px;
+    height: 100%;
+}
+
+.news-card-i span
+{
+    position: absolute;
+    bottom:0;
+    left: 0;
+    right: 0;
+    padding: 1px;
+    background-color: #1FC113;
+    color: white;
+    font-weight: 600;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+.news-card-c
+{
+    padding-left: 1.2rem;
+}
+.news-card-c span
+{
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+.news-card-c p
+{
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+.news-card-c h3
+{
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+.news-card-c a
+{
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+.achive-i
+{
+    border-left: 0.5px solid lightgray;
+}
+.achive-i h4
+{
+    font-size: 2rem;
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.achive
+{
+    position: relative;
+    height: 60%;
+}
+.achive img
+{
+    width: 100%;
+    height: 100%;
+}
+.achive .caption
+{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    font-size: 2rem;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #E57A18;
+    color: white;
+}
+
+/* End of News Section */
+
+/* Start of Admission Section */
+.admission
+{
+    width: 100%;
+    background-color: #1FC113;
+}
+
+.admission-m span
+{
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.admission-m h2
+{
+    color: white;
+    font-size: 4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.form-admission .btn
+{
+    color: white;
+    background-color: #1FC113;
+}
+
+.form-admission .btn input
+{
+    background-color: #1FC113;
+    color: white;
+    outline: none;
+    font-weight: 600;
+    font-size: 1.4rem;
+    border: none;
+    height: 2.4rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid white;
+}
+
+.form-admission input
+{
+    height: 4rem;
+    color: black;
+    margin-top: 1.2rem;
+}
+
+.form-admission input::placeholder { 
+    color: black;
+    opacity: 1; /* Firefox */
+  }
+  
+  .form-admission input:-ms-input-placeholder { 
+    color: black;
+  }
+  
+  .form-admission input::-ms-input-placeholder { 
+    color: black;
+  }
+  .a-img img
+  {
+      box-sizing: border-box;
+      border: 5px solid #E57A18;
+      margin-left: 1rem;
+  }
+/* End of Admission Section */
+
+/* Start of Event Section */
+.events
+{
+    position: relative;
+}
+.e-details
+{
+    position: absolute;
+    bottom: -2rem;
+    padding-top: 0.6rem;
+    padding-right: 2rem;
+    padding-left: 0.6rem;
+    padding-bottom: 0.6rem;
+    left: 1rem;
+    background-color: white;
+}
+.e-details span
+{
+    font-size: 1.2rem;
+}
+
+.e-details a
+{
+    color: black;
+    font-weight: 600;
+    border-bottom: 0.8px solid gray;
+    text-transform: uppercase;
+}
+
+.e-name
+{
+    border-radius: 1rem;
+    background-color: lightblue;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+/* End of Event Sectoion */
+
+/* Partner */
+.partners
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+
+}
+/* End of Partner */
+
+/* Footer */
+.footer
+{
+    background-image: url("../images/backimage.jpg");
+    background-size: 100% 100%;
+}
+.f-links
+{
+    color: white;
+    margin-left: 4rem;
+}
+.f-first,.f-second
+{
+    list-style-type: none;
+    color: white;
+}
+.f-links span
+{
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    font-weight: 400;
+    border-bottom: 1px solid white;
+
+}
+.f-first li a,.f-second li a
+{
+    color: white;
+    font-size: 1rem;
+    line-height: 2!important;
+
+}
+
+.f-subscribe span
+{
+    color: white;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    border-bottom: 1px solid white;
+    
+}
+.f-subscribe
+{
+    margin-left: 8rem;
+    width: 60%;
+    padding-left: 4rem;
+    border-left: 1px solid white;
+}
+.f-input input
+{
+    width: 100%;
+    background: transparent;
+    color: white!important;
+    outline: none;
+    border: none;
+    padding-left: 0.3rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid white;
+}
+.f-input
+{
+    position: relative;
+    padding-top: 1.2rem;
+}
+
+.f-input span
+{
+    position: absolute;
+    right: 0;
+    color: black;
+    border-radius:50%;
+    bottom: 0.2rem;
+    font-weight: 600;
+    background-color: white;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+}
+/* End of footer */
