@@ -698,9 +698,21 @@
     {
         display: flex!important;
         flex-direction: column;
+        padding: 0.6rem!important;
+        margin-top: 0.6rem!important;
     }
     .e-name{
         margin: 1rem;
+    }
+}
+
+@media screen and (max-width:300px)
+{
+    .e-name
+    {
+        font-size: 0.4rem;
+        font-weight: 500;
+        margin: 0.4rem;
     }
 }
 /* End of Event Sectoion */
