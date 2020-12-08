@@ -691,6 +691,18 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+@media screen and (max-width:750px)
+{
+    .events-option
+    {
+        display: flex!important;
+        flex-direction: column;
+    }
+    .e-name{
+        margin: 1rem;
+    }
+}
 /* End of Event Sectoion */
 
 /* Partner */
