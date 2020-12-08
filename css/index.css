@@ -692,13 +692,18 @@
     text-transform: uppercase;
 }
 
+.events-option
+{
+    padding: 3rem 0;
+}
+
 @media screen and (max-width:750px)
 {
     .events-option
     {
         display: flex!important;
         flex-direction: column;
-        padding: 0.6rem!important;
+        padding: 1rem 0;
         margin-top: 0.6rem!important;
     }
     .e-name{
