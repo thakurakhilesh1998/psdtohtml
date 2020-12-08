@@ -52,6 +52,29 @@
     margin-left: 16px;
 }
 
+.sub-heading
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+@media screen and (max-width: 750px) {
+    .sub-heading {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 0!important;
+      align-items: flex-start;
+
+    }
+
+    .sub-heading span,.contact-icons,a
+    {
+        margin: 0.4rem;
+    }
+  }
+
 /* Start of header section */
 .top-navbar
 {
