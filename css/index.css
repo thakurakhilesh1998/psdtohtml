@@ -59,13 +59,14 @@
     justify-content: space-around;
     align-items: center;
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 770px) {
     .sub-heading {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin-left: 0!important;
       align-items: flex-start;
+      padding: 1rem;
 
     }
 
@@ -76,6 +77,11 @@
   }
 
 /* Start of header section */
+
+.h-nav ul li:hover
+{
+    color: black!important;
+}
 .top-navbar
 {
     background-color:#E57A18!important;
@@ -102,6 +108,16 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
+@media screen and (max-width: 770px) {
+    .navbar-container li a
+    {
+        color: white!important;
+        margin-left: 0rem;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+  }
 
 /* Start of banner */
 .banner
