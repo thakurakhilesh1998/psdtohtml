@@ -297,6 +297,14 @@
 /* End of banner */
 
 /* Announcemnet */
+
+#see_more
+{
+    border-bottom:1px solid white;
+    font-size:1.2rem;
+    text-decoration:none;
+    cursor:pointer;
+}
 .announ
 {
     background-color:hsl(116, 82%, 42%);
@@ -308,11 +316,11 @@
     text-align: center;
     color: white;
 }
-
 .card-announce
 {
     background-color: white;
     box-sizing: border-box;
+    height: 150px;
     border-radius: 6px;
 }
 

@@ -1,4 +1,6 @@
-<!-- <?php ?> -->
+<?php
+require_once 'connection/db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,17 +9,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oxford College Hubei</title>
-    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css?v=<?php echo time()?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+    <script>
+            function doReload(value)    
+            {
+                document.location = 'index.php?news_type=' + value;
+            }        
     </script>
 </head>
 
@@ -40,9 +45,7 @@
     <header>
         <div class="container-fluid nav-bar py-1  navbar-dark">
             <nav class="navbar navbar-expand-lg top-navbar">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse h-nav" id="navbarSupportedContent">
@@ -99,35 +102,52 @@
 
     <!--Start of Announcent ment-->
     <section>
+
+        <?php 
+            $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC LIMIT 4");
+            if(isset($_GET['see']))
+            {
+                $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC");
+            }
+            else if(isset($_GET['less']))
+            {
+                $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC LIMIT 4");
+            }
+        ?>
         <div class="announ container-fluid">
             <h4>OUR ANNOUNCEMENT</h3>
                 <div class="container">
-                    <div class="row my-4">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="p-1 my-2 card-announce">
-                                <div class="date"> 16.05.2020</div>
-                                <p class="card-details">Exams are starting so fill forms as soon as possible.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="p-1 my-2 card-announce">
-                                <div class="date"> 16.05.2020</div>
-                                <p class="card-details">Exams are starting so fill forms as soon as possible.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="p-1 my-2 card-announce">
-                                <div class="date"> 16.05.2020</div>
-                                <p class="card-details">Exams are starting so fill forms as soon as possible.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="p-1 my-2 card-announce">
-                                <div class="date"> 16.05.2020</div>
-                                <p class="card-details">Exams are starting so fill forms as soon as possible.</p>
-                            </div>
-                        </div>
+                    <div class="row my-4 d-flex flex-wrap" id="announ-main">
+                        <?php if (mysqli_num_rows($announcement)>0) : ?>
+                            <?php while ($getAnnounce = mysqli_fetch_assoc($announcement)) : ?>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="p-1 my-2 card-announce">
+                                        <div class="date"> <?php echo $getAnnounce['a_date'] ?></div>
+                                        <p class="card-details"><?php echo $getAnnounce['a_msg'] ?></p>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
                     </div>
+                    <?php
+                            $announcementa = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC");
+                            if (mysqli_num_rows($announcementa) > 4) :
+                            ?>
+                                <?php if(!isset($_GET['see'])):?>
+                                    <div style="text-align:center;">
+                                        <a class="text-white" href="index.php?see=more" id="see_more">See More</a>
+                                    </div>
+                                <?php else:?>
+                                    <div style="text-align:center;">
+                                        <a class="text-white" href="index.php?less=less" id="see_more">See Less</a>
+                                    </div>
+                                <?php endif;?>
+                            <?php endif; ?>
+
+                        <?php else : ?>
+                            <div style="margin:0 auto">
+                                <h4 style="font-size: 2rem;">No Announcement Yet!</h4>
+                            </div>
+                        <?php endif; ?>
                 </div>
         </div>
     </section>
@@ -254,8 +274,7 @@
                         passage, and going through the cites of the word in classical literature, discovered the
                         undoubtable source.
                     </p>
-                    <a href="#">Know More <i class="fa fa-long-arrow-right" aria-hidden="true"
-                            style="margin-left:1rem;"></i></a>
+                    <a href="#">Know More <i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                 </div>
             </div>
         </div>
@@ -270,56 +289,44 @@
                     <div class="col-md-7">
                         <div class="news-heading">
                             <h4>Latest News</h4>
-                            <select>
-                                <option>Cultural</option>
-                                <option>Educational</option>
-                            </select>
+                            <form method="GET" action="index.php">
+                                <select name="n_type" onchange="doReload(this.value);">
+                                    <option selected>Select Type</option>
+                                    <option value="Culture">Culture</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Miscellaneous">Miscellaneous</option>
+                                </select>
+                            </form>
                         </div>
-                        <div class="news-card">
-                            <div class="news-card-i">
-                                <img src="images/news.png" alt="news logo">
-                                <span>Cultural</span>
-                            </div>
-                            <div class="news-card-c">
-                                <span>07-12-2020</span>
-                                <h3>News Title Here</h3>
-                                <p>It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </p>
-                                <a href="#">Know Here<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                        style="margin-left:1rem;"></i></a>
-                            </div>
-                        </div>
-                        <div class="news-card">
-                            <div class="news-card-i">
-                                <img src="images/news.png" alt="news logo">
-                                <span>Cultural</span>
-                            </div>
-                            <div class="news-card-c">
-                                <span>07-12-2020</span>
-                                <h3>News Title Here</h3>
-                                <p>It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </p>
-                                <a href="#">Know Here<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                        style="margin-left:1rem;"></i></a>
-                            </div>
-                        </div>
-                        <div class="news-card" style="border: none;">
-                            <div class="news-card-i">
-                                <img src="images/news.png" alt="news logo">
-                                <span>Cultural</span>
-                            </div>
-                            <div class="news-card-c">
-                                <span>07-12-2020</span>
-                                <h3>News Title Here</h3>
-                                <p>It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </p>
-                                <a href="#">Know Here<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                        style="margin-left:1rem;"></i></a>
-                            </div>
-                        </div>
+                            <!--Start of php section-->
+                            <?php 
+                                
+                                if(isset($_GET['news_type']))
+                                {
+                                    $type_n=$_GET['news_type'];
+                                    $newsq=mysqli_query($db,"SELECT * FROM `college_news` WHERE `type`='$type_n' ORDER BY `date` DESC");
+                                }
+                                else
+                                {
+                                    $newsq=mysqli_query($db,"SELECT * FROM `college_news` WHERE `type`='Culture' ORDER BY `date` DESC");
+                                }
+                                if(mysqli_num_rows($newsq)>0):
+                            ?>
+                            <?php while($news=mysqli_fetch_assoc($newsq)):?>
+                                <div class="news-card">
+                                    <div class="news-card-i">
+                                        <img src="images/news.png" alt="news logo">
+                                        <span><?php echo $news['type']?></span>
+                                    </div>
+                                    <div class="news-card-c">
+                                        <span><?php echo $news['date']?></span>
+                                        <h3><?php echo $news['title']?></h3>
+                                        <p><?php echo $news['msg']?></p>
+                                        <a href="#">Know Here<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
+                                    </div>
+                                </div>
+                                <?php endwhile;?>
+                            <?php endif;?>
                     </div>
                     <div class="col-md-5 achive-i pl-md-5 pl-sm-0">
                         <h4>Achivements</h4>
@@ -342,19 +349,33 @@
                     <div class="col-md-6 col-sm-12 admission-m">
                         <span>Get Your</span>
                         <h2>Admission</h2>
-                        <form class="form-admission">
+                        <form class="form-admission" method="GET" action="admissionfxn.php">
                             <div class="form-group">
-                                <input type="text" name="name" placeholder="Name" class="form-control">
+                                <input type="text" name="name" placeholder="Name" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter Email" class="form-control">
+                                <input type="email" name="email" placeholder="Enter Email" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <input type="number" name="phone" placeholder="Phone Number" class="form-control">
+                                <input type="number" name="phone" placeholder="Phone Number" class="form-control" required>
                             </div>
-                            <div class="btn"><input type="submit" value="Submit"><i class="fa fa-long-arrow-right"
-                                    aria-hidden="true" style="margin-left:1rem;"></i></div>
+                            <div class="btn"><input type="submit" value="Submit" required><i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></div>
                         </form>
+                        <?php if(isset($_GET['notnull'])):?>
+                            <div class="alert alert-danger mt-2" role="alert">
+                                Enter details in all fields!!
+                            </div>   
+                        <?php endif;?>
+                        <?php if(isset($_GET['pass'])):?>
+                            <div class="alert alert-success mt-2" role="alert">
+                                Your data is saved successfully!!
+                            </div>
+                        <?php endif;?>
+                        <?php if(isset($_GET['fail'])):?>
+                            <div class="alert alert-danger mt-2" role="alert">
+                                Your details are already registered!!
+                            </div> 
+                        <?php endif;?>
                     </div>
                     <div class="col-md-6 a-img " style="box-sizing: border-box;">
                         <img src="images/science-lab.jpg" alt="science lab" class="img-fluid mt-5 ml-5">
@@ -389,8 +410,7 @@
                         <div class="e-details">
                             <span>21/12/2020</span>
                             <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                    style="margin-left:1rem;"></i></a>
+                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -400,8 +420,7 @@
                         <div class="e-details">
                             <span>21/12/2020</span>
                             <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                    style="margin-left:1rem;"></i></a>
+                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -411,8 +430,7 @@
                         <div class="e-details">
                             <span>21/12/2020</span>
                             <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                    style="margin-left:1rem;"></i></a>
+                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -422,8 +440,7 @@
                         <div class="e-details">
                             <span>21/12/2020</span>
                             <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true"
-                                    style="margin-left:1rem;"></i></a>
+                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                         </div>
                     </div>
                 </div>
@@ -486,6 +503,7 @@
         </div>
     </footer>
     <!--End of Footer Section-->
+    <script src="js/index.js" type="text/js"></script>
 </body>
 
 </html>
