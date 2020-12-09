@@ -19,10 +19,9 @@ require_once 'connection/db.php';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
     <script>
-            function doReload(value)    
-            {
-                document.location = 'index.php?news_type=' + value;
-            }        
+        function doReload(value) {
+            document.location = 'index.php?news_type=' + value;
+        }
     </script>
 </head>
 
@@ -103,22 +102,19 @@ require_once 'connection/db.php';
     <!--Start of Announcent ment-->
     <section>
 
-        <?php 
+        <?php
+        $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC LIMIT 4");
+        if (isset($_GET['see'])) {
+            $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC");
+        } else if (isset($_GET['less'])) {
             $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC LIMIT 4");
-            if(isset($_GET['see']))
-            {
-                $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC");
-            }
-            else if(isset($_GET['less']))
-            {
-                $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC LIMIT 4");
-            }
+        }
         ?>
         <div class="announ container-fluid">
             <h4>OUR ANNOUNCEMENT</h3>
                 <div class="container">
                     <div class="row my-4 d-flex flex-wrap" id="announ-main">
-                        <?php if (mysqli_num_rows($announcement)>0) : ?>
+                        <?php if (mysqli_num_rows($announcement) > 0) : ?>
                             <?php while ($getAnnounce = mysqli_fetch_assoc($announcement)) : ?>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="p-1 my-2 card-announce">
@@ -131,23 +127,23 @@ require_once 'connection/db.php';
                     <?php
                             $announcementa = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC");
                             if (mysqli_num_rows($announcementa) > 4) :
-                            ?>
-                                <?php if(!isset($_GET['see'])):?>
-                                    <div style="text-align:center;">
-                                        <a class="text-white" href="index.php?see=more" id="see_more">See More</a>
-                                    </div>
-                                <?php else:?>
-                                    <div style="text-align:center;">
-                                        <a class="text-white" href="index.php?less=less" id="see_more">See Less</a>
-                                    </div>
-                                <?php endif;?>
-                            <?php endif; ?>
-
+                    ?>
+                        <?php if (!isset($_GET['see'])) : ?>
+                            <div style="text-align:center;">
+                                <a class="text-white" href="index.php?see=more" id="see_more">See More</a>
+                            </div>
                         <?php else : ?>
-                            <div style="margin:0 auto">
-                                <h4 style="font-size: 2rem;">No Announcement Yet!</h4>
+                            <div style="text-align:center;">
+                                <a class="text-white" href="index.php?less=less" id="see_more">See Less</a>
                             </div>
                         <?php endif; ?>
+                    <?php endif; ?>
+
+                <?php else : ?>
+                    <div style="margin:0 auto">
+                        <h4 style="font-size: 2rem;">No Announcement Yet!</h4>
+                    </div>
+                <?php endif; ?>
                 </div>
         </div>
     </section>
@@ -298,35 +294,32 @@ require_once 'connection/db.php';
                                 </select>
                             </form>
                         </div>
-                            <!--Start of php section-->
-                            <?php 
-                                
-                                if(isset($_GET['news_type']))
-                                {
-                                    $type_n=$_GET['news_type'];
-                                    $newsq=mysqli_query($db,"SELECT * FROM `college_news` WHERE `type`='$type_n' ORDER BY `date` DESC");
-                                }
-                                else
-                                {
-                                    $newsq=mysqli_query($db,"SELECT * FROM `college_news` WHERE `type`='Culture' ORDER BY `date` DESC");
-                                }
-                                if(mysqli_num_rows($newsq)>0):
-                            ?>
-                            <?php while($news=mysqli_fetch_assoc($newsq)):?>
+                        <!--Start of php section-->
+                        <?php
+
+                        if (isset($_GET['news_type'])) {
+                            $type_n = $_GET['news_type'];
+                            $newsq = mysqli_query($db, "SELECT * FROM `college_news` WHERE `type`='$type_n' ORDER BY `date` DESC");
+                        } else {
+                            $newsq = mysqli_query($db, "SELECT * FROM `college_news` WHERE `type`='Culture' ORDER BY `date` DESC");
+                        }
+                        if (mysqli_num_rows($newsq) > 0) :
+                        ?>
+                            <?php while ($news = mysqli_fetch_assoc($newsq)) : ?>
                                 <div class="news-card">
                                     <div class="news-card-i">
                                         <img src="images/news.png" alt="news logo">
-                                        <span><?php echo $news['type']?></span>
+                                        <span><?php echo $news['type'] ?></span>
                                     </div>
                                     <div class="news-card-c">
-                                        <span><?php echo $news['date']?></span>
-                                        <h3><?php echo $news['title']?></h3>
-                                        <p><?php echo $news['msg']?></p>
+                                        <span><?php echo $news['date'] ?></span>
+                                        <h3><?php echo $news['title'] ?></h3>
+                                        <p><?php echo $news['msg'] ?></p>
                                         <a href="#">Know Here<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                                     </div>
                                 </div>
-                                <?php endwhile;?>
-                            <?php endif;?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
                     </div>
                     <div class="col-md-5 achive-i pl-md-5 pl-sm-0">
                         <h4>Achivements</h4>
@@ -361,21 +354,21 @@ require_once 'connection/db.php';
                             </div>
                             <div class="btn"><input type="submit" value="Submit" required><i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></div>
                         </form>
-                        <?php if(isset($_GET['notnull'])):?>
+                        <?php if (isset($_GET['notnull'])) : ?>
                             <div class="alert alert-danger mt-2" role="alert">
                                 Enter details in all fields!!
-                            </div>   
-                        <?php endif;?>
-                        <?php if(isset($_GET['pass'])):?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (isset($_GET['pass'])) : ?>
                             <div class="alert alert-success mt-2" role="alert">
                                 Your data is saved successfully!!
                             </div>
-                        <?php endif;?>
-                        <?php if(isset($_GET['fail'])):?>
+                        <?php endif; ?>
+                        <?php if (isset($_GET['fail'])) : ?>
                             <div class="alert alert-danger mt-2" role="alert">
                                 Your details are already registered!!
-                            </div> 
-                        <?php endif;?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="col-md-6 a-img " style="box-sizing: border-box;">
                         <img src="images/science-lab.jpg" alt="science lab" class="img-fluid mt-5 ml-5">
@@ -391,59 +384,46 @@ require_once 'connection/db.php';
             <h2 class="text-center mt-4 font-weight-bold" style="text-transform: uppercase;">Our Events</h2>
             <div class="d-flex justify-content-between events-option">
                 <div class="e-name">
-                    Cultural Event
+                    <a href="index.php?typee=Culture">Cultural Event</a>
                 </div>
                 <div class="e-name">
-                    Educational Event
+                    <a href="index.php?typee=Education">Educational Event</a>
                 </div>
                 <div class="e-name">
-                    Cermonial Event
+                    <a href="index.php?typee=Ceremonial">Cermonial Event</a>
                 </div>
                 <div class="e-name">
-                    Campus Event
+                    <a href="index.php?typee=Campus">Campus Event</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 events mt-sm-1">
-                    <div class="my-5">
-                        <img src="images/science-lab.jpg" alt="images" class="img-fluid">
-                        <div class="e-details">
-                            <span>21/12/2020</span>
-                            <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
+                <?php
+                if (isset($_GET['typee'])) {
+                    $types = $_GET['typee'];
+                    $events = mysqli_query($db, "SELECT * FROM `events` WHERE `type`='$types' ORDER BY `date` DESC");
+                } else {
+                    $events = mysqli_query($db, "SELECT * FROM `events` ORDER BY `date` DESC");
+                }
+
+                if (mysqli_num_rows($events) > 0) :
+                ?>
+                    <?php while ($getEvetns = mysqli_fetch_assoc($events)) : ?>
+                        <div class="col-md-6 events mt-sm-1">
+                            <div class="my-5">
+                                <img src=<?php echo $getEvetns['image'] ?> alt="images" class="img-fluid" style="width: 100%;height:300px">
+                                <div class="e-details">
+                                    <span><?php echo $getEvetns['date'] ?></span>
+                                    <h4><?php echo $getEvetns['name'] ?></h4>
+                                    <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
+                                </div>
+                            </div>
                         </div>
+                    <?php endwhile; ?>
+                <?php else : ?>
+                    <div style="margin:0 auto;font-size:1.4rem;font-weight:600">
+                        No Events Found!!!
                     </div>
-                </div>
-                <div class="col-md-6 events mt-sm-1">
-                    <div class="my-5">
-                        <img src="images/science-lab.jpg" alt="images" class="img-fluid">
-                        <div class="e-details">
-                            <span>21/12/2020</span>
-                            <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 events mt-sm-1">
-                    <div class="my-5">
-                        <img src="images/science-lab.jpg" alt="images" class="img-fluid">
-                        <div class="e-details">
-                            <span>21/12/2020</span>
-                            <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 events mt-sm-1">
-                    <div class="my-5">
-                        <img src="images/science-lab.jpg" alt="images" class="img-fluid">
-                        <div class="e-details">
-                            <span>21/12/2020</span>
-                            <h4>Events come here</h4>
-                            <a href="#">Know more<i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
         </div>
@@ -487,14 +467,24 @@ require_once 'connection/db.php';
                 </div>
                 <div class="f-subscribe">
                     <span>Subscribe To NewsLetter</span>
-                    <div class="f-input mt-4">
-                        <input type="text" placeholder="Enter Email Address">
-                        <span>
-                            Go
-                        </span>
+                    <div class="mt-4">
+                        <form method="GET" action="subscribefxn.php" class="f-input">
+                            <input type="text" placeholder="Enter Email Address" required name="s-email">
+                            <input type="submit" value="GO" name="subscribe">
+                        </form>
                     </div>
-                </div>
+                    <?php if (isset($_GET['sub'])) : ?>
+                        <div class="alert alert-success mt-4" role="alert">
+                            Email Added to Newsletter Successfully!!
+                        </div>
 
+                    <?php endif; ?>
+                    <?php if (isset($_GET['subf'])) : ?>
+                        <div class="alert alert-warning mt-4" role="alert">
+                            Email is Already Registered!!
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="container">
                 <hr style="background-color: gray;">
