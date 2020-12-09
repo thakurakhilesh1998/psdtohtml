@@ -65,7 +65,7 @@
       flex-direction: column;
       justify-content: space-between;
       margin-left: 0!important;
-      align-items: flex-start;
+      align-items: flex-end;
       padding: 1rem;
 
     }
@@ -462,6 +462,14 @@
     text-decoration: none;
 }
 
+@media screen and (max-width:750px)
+{
+    .a-img
+    {
+        display: none;
+    }
+}
+
 /* End of About Section */
 
 /* Start of News Section */
@@ -651,6 +659,14 @@
       border: 5px solid #E57A18;
       margin-left: 1rem;
   }
+
+  @media screen and (max-width:750px)
+  {
+    .a-img
+    {
+        display: none;
+    }
+  }
 /* End of Admission Section */
 
 /* Start of Event Section */
@@ -719,6 +735,11 @@
         font-weight: 500;
         margin: 0.4rem;
     }
+    .events
+    {
+        margin-top: 4rem;
+    }
+
 }
 /* End of Event Sectoion */
 
@@ -820,5 +841,46 @@
     background-color: white;
     font-size: 0.8rem;
     padding: 0.2rem;
+}
+
+@media screen and (max-width:750px)
+{
+    .footer-c
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .f-links
+    {
+        margin:1.2rem 1rem;
+    }
+
+    .f-links span
+    {
+        margin-top: 2rem!important;
+    }
+    .f-logo
+    {
+        text-align: center;
+    }
+    .f-first,.f-second
+    {
+        padding-top: 0!important;
+    }
+
+    .f-subscribe
+    {
+        margin-left: 0;
+        padding-left:0;
+        width: 100%;
+        border: none;
+        margin-bottom: 1rem;
+    }
+
+    .f-input
+    {
+        padding-top: 0;
+    }
+
 }
 /* End of footer */
