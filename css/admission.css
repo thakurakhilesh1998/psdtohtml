@@ -1,0 +1,51 @@
+/* #A5E7A0 */
+
+.admissions .n-active
+{
+    background-color: #A5E7A0;
+    border-left: 2px solid white;
+}
+
+.admissions
+{
+    border-bottom: thin solid lightgray;
+}
+
+.main
+{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    padding: 1rem;
+    padding-top:0;
+}
+.admissions div
+{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0!important;
+}
+
+.notices
+{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.getAdmitted
+{
+    display: inline-block;
+    background-color: #E57A18;
+    padding:0.6rem;
+}
+.getAdmitted a
+{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding:2rem;
+}
+.getAdmitted a:hover
+{
+    text-decoration: none;
+    color: white;
+}

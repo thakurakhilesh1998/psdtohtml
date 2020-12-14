@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once 'connection/db.php';
 ?>
 
@@ -9,7 +10,7 @@ require_once 'connection/db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oxford College Hubei</title>
-    <link href="css/index.css?v=<?php echo time()?>" rel="stylesheet" type="text/css">
+    <link href="css/index.css?v=<?php echo time() ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -26,6 +27,48 @@ require_once 'connection/db.php';
 </head>
 
 <body>
+
+        
+    <!-- Modal -->
+    <div class="modal fade mr-3" id="myModal" role="dialog">
+        <div class="modal-dialog mt-3">
+            <!-- Modal content-->
+            <div class="modal-content my-5">
+                <div class="modal-header">
+                    <h4 style="margin: 0 auto;font-size:2rem">Apply Online For Admision</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <form class="mt-4" onsubmit=" return onSubmmited(event)" name="admission" action="saveadmissiondata.php" method="GET">
+                    <div class="form-group d-flex px-3 ainput">
+                        <input type="text" class="form-control mr-2"  name="a_name" placeholder="Name*" required id="aname">
+                        <input type="email" class="form-control ml-2" name="a_email" placeholder="Email*" required id="aemail">
+                    </div>
+                    <div class="form-group d-flex px-3 ainput">
+                        <input type="number" class="form-control mr-2" name="a_phone" placeholder="Phone*" required id="anumber">
+                        <input type="text" class="form-control ml-2" name="a_address" placeholder="Address*" required id="address">
+                    </div>
+                    <div class="form-group px-3 ainput">
+                        <select class="form-control" required id="aprogram" name="a_program">
+                            <option value="0">Select Programme</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="B.E.">B.E.</option>
+                            <option value="B.SC.">B.SC.</option>
+                            <option value="MCA">MCA</option>
+                        </select>
+                    </div>
+                    <div class="form-group px-3 ainput">
+                        <textarea class="form-control" rows="4" placeholder="Comments(optional)" name="comment"></textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Apply Online" id="pop-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of Modal Content -->
+
+
     <!-- Start of sub heading-->
     <section>
         <div class="container py-3 sub-heading">
@@ -43,20 +86,21 @@ require_once 'connection/db.php';
     <!-- Start of Main Header-->
     <header>
         <div class="container-fluid nav-bar py-1  navbar-dark">
-            <nav class="navbar navbar-expand-lg top-navbar">
+            <nav class="navbar navbar-expand-lg top-navbar container">
+                <a class="navbar-brand" href="#" style="width: 60px;height:60px;padding:0;margin:0"><img src="images/logo.png" style="width: 60px;height:60px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse h-nav" id="navbarSupportedContent">
                     <ul class="navbar-nav navbar-container">
                         <li class="navbar-nav"> <a class="nav-link" href="#">Home</a></li>
-                        <li class="navbar-nav"> <a class="nav-link" href="#">About</a></li>
-                        <li class="navbar-nav"> <a class="nav-link" href="#">Course Offered</a></li>
-                        <li class="navbar-nav"> <a class="nav-link" href="#">Placements</a></li>
-                        <li class="navbar-nav"> <a class="nav-link" href="#">Admissions</a></li>
-                        <li class="navbar-nav"> <a class="nav-link" href="#">Achivements</a></li>
+                        <li class="navbar-nav"> <a class="nav-link" href="about.php">About</a></li>
+                        <li class="navbar-nav"> <a class="nav-link" href="courses offered.php">Course Offered</a></li>
+                        <li class="navbar-nav"> <a class="nav-link" href="placements.php">Placements</a></li>
+                        <li class="navbar-nav"> <a class="nav-link" href="admission.php">Admissions</a></li>
+                        <li class="navbar-nav"> <a class="nav-link" href="#announcement-section">Achivements</a></li>
                         <li class="navbar-nav"> <a class="nav-link" href="#">Club</a></li>
-                        <li class="navbar-nav"> <a class="nav-link" href="#">Events</a></li>
+                        <li class="navbar-nav"> <a class="nav-link" href="#events-section">Events</a></li>
                     </ul>
                 </div>
             </nav>
@@ -101,7 +145,6 @@ require_once 'connection/db.php';
 
     <!--Start of Announcent ment-->
     <section>
-
         <?php
         $announcement = mysqli_query($db, "SELECT * FROM `announcement` ORDER BY `a_date` DESC LIMIT 4");
         if (isset($_GET['see'])) {
@@ -270,14 +313,14 @@ require_once 'connection/db.php';
                         passage, and going through the cites of the word in classical literature, discovered the
                         undoubtable source.
                     </p>
-                    <a href="#">Know More <i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
+                    <a href="about.php">Know More <i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></a>
                 </div>
             </div>
         </div>
     </section>
     <!--End of About Section-->
     <!--Start of News section-->
-    <section>
+    <section id="announcement-section">
         <div class="container-fluid news">
             <hr style="margin: 30px 30px!important;">
             <div class="container">
@@ -342,18 +385,24 @@ require_once 'connection/db.php';
                     <div class="col-md-6 col-sm-12 admission-m">
                         <span>Get Your</span>
                         <h2>Admission</h2>
-                        <form class="form-admission" method="GET" action="admissionfxn.php">
+                        <div class="form-admission" method="GET">
                             <div class="form-group">
-                                <input type="text" name="name" placeholder="Name" class="form-control" required>
+                                <input type="text" name="name" placeholder="Name" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Enter Email" class="form-control" required>
+                                <input type="email" name="email" placeholder="Enter Email" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="number" name="phone" placeholder="Phone Number" class="form-control" required>
+                                <input type="number" name="phone" placeholder="Phone Number" class="form-control">
                             </div>
-                            <div class="btn"><input type="submit" value="Submit" required><i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i></div>
-                        </form>
+                            <!-- Modal Trigger button -->
+                            
+                            <!-- Modal content -->
+                            <div class="btn">
+                                <input type="submit" value="Get Admission" required data-toggle="modal" data-target="#myModal"><i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i>
+                                <!-- <input type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" value="Submit"><i class="fa fa-long-arrow-right" aria-hidden="true" style="margin-left:1rem;"></i> -->
+                            </div>
+                            </div>
                         <?php if (isset($_GET['notnull'])) : ?>
                             <div class="alert alert-danger mt-2" role="alert">
                                 Enter details in all fields!!
@@ -379,7 +428,7 @@ require_once 'connection/db.php';
     </section>
     <!--End of Admission Section-->
     <!--Start of Events Section-->
-    <section>
+    <section id="events-section">
         <div class="container">
             <h2 class="text-center mt-4 font-weight-bold" style="text-transform: uppercase;">Our Events</h2>
             <div class="d-flex justify-content-between events-option">
@@ -431,8 +480,8 @@ require_once 'connection/db.php';
     <!--End of Events Section-->
     <!--Start of Partners Section-->
     <div class="container">
-        <h3 class="mt-md-5 mt-sm-3 text-center pt-5 font-weight-bold">Our Partners</h3>
-        <div class="partners mt-4">
+    <h4 class="text-center mt-5 font-weight-bold" style="text-transform: uppercase;">Our Partners</h4>                    
+        <div class="partners mt-2">
             <img src="images/tata.png" alt="image" class="img-fluid">
             <img src="images/cognizant.png" class="img-fluid">
             <img src="images/a.png" class="img-fluid">
@@ -453,12 +502,12 @@ require_once 'connection/db.php';
                     <div class="f-first d-flex justify-content-between f-links-lists">
                         <ul class="f-first mt-4 mt-md-1">
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Placements</a></li>
+                            <li><a href="about.php">About Us</a></li>
+                            <li><a href="courses offered.php">Courses</a></li>
+                            <li><a href="placements.php">Placements</a></li>
                         </ul>
                         <ul class="f-second mt-4 ml-5 mt-md-1 ml-md-5 ml-sm-1">
-                            <li><a href="#">Admissions</a></li>
+                            <li><a href="admission.php">Admissions</a></li>
                             <li><a href="#">Achivements</a></li>
                             <li><a href="#">Club</a></li>
                             <li><a href="#">Events</a></li>
@@ -468,7 +517,7 @@ require_once 'connection/db.php';
                 <div class="f-subscribe">
                     <span>Subscribe To NewsLetter</span>
                     <div class="mt-4">
-                        <form method="GET" action="subscribefxn.php" class="f-input">
+                        <form method="GET" action="sfxns/subscribefxn.php" class="f-input">
                             <input type="text" placeholder="Enter Email Address" required name="s-email">
                             <input type="submit" value="GO" name="subscribe">
                         </form>
@@ -493,7 +542,19 @@ require_once 'connection/db.php';
         </div>
     </footer>
     <!--End of Footer Section-->
-    <script src="js/index.js" type="text/js"></script>
+    <script src="js/index.js?v=<?php echo time()?>" type="text/javascript"></script>
+    <?php if(isset($_GET['as'])):?>
+            <script>
+                alert("Your admission information saved successfully");
+            </script>
+        <?php endif;?>
+
+        <?php if(isset($_GET['af'])):?>
+            <script>
+                alert("Error while saving your details!!Your data may be already exists");
+            </script>
+        <?php endif;?>
+        <?php ob_flush();?>
 </body>
 
 </html>

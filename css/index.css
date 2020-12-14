@@ -7,6 +7,16 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+#pop-btn
+{
+    background-color:#1FC113;
+    color: white;
+    text-transform: uppercase;
+    outline: none;
+    padding: 0.8rem;
+    border: none;
+}
 .contact-us span img
 {
     font-size: 1.3rem;
@@ -67,6 +77,8 @@
       margin-left: 0!important;
       align-items: flex-end;
       padding: 1rem;
+      width: 100%;
+      max-width: 100%!important;
 
     }
 
@@ -130,6 +142,7 @@
 {
     width: 100%;
     height: 400px;
+    opacity: 0.3;
 }
 
 .banner-text
@@ -141,7 +154,7 @@
     top: 20%;
     padding: 0.6rem;
     box-sizing: border-box;
-    color: #1FC113;
+    color: black;
     background-color: transparent;
 }
 #first
@@ -249,7 +262,7 @@
     line-height: 0.8;
 }
 
-@media screen and (max-width:750px)
+@media screen and (max-width:800px)
 {
     .tally-first .head
     {
@@ -446,6 +459,18 @@
     color: black;
     margin-top: 1rem;
     line-height: 0.9;
+}
+
+@media screen and (max-width:400px)
+{
+    .about-details h2
+    {
+        font-size: 2rem;
+    }
+    .about-details span
+    {
+        font-size: 1rem;
+    }
 }
 
 .about-details p
@@ -651,6 +676,18 @@
     text-transform: uppercase;
 }
 
+@media screen and (max-width:400px)
+{
+    .admission-m span
+    {
+        font-size: 1rem;
+    }
+    .admission-m h2
+    {
+        font-size: 2rem;
+    }
+    
+}
 .form-admission .btn
 {
     color: white;
@@ -749,6 +786,13 @@
 {
     text-decoration: none;
     cursor: pointer;
+    color: black;
+}
+.e-name a:hover
+{
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
 }
 .events-option
 {
@@ -790,10 +834,15 @@
 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.5rem 0;
 
 }
-
+.partners img
+{
+    width: 120px;
+    height: 60px;
+}
 @media screen and (max-width:750px)
 {
     .partners
@@ -890,7 +939,7 @@
     padding: 0.3rem;
 }
 
-@media screen and (max-width:750px)
+@media screen and (max-width:1000px)
 {
     .footer-c
     {

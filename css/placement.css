@@ -1,0 +1,92 @@
+@media screen and (max-width:350px)
+{
+    .banner-text #second
+    {   
+        font-size: 1.6rem;
+    }
+}
+
+.banner-text #first,#second
+{
+    color: black;
+}
+
+.banner img
+{
+    height: 300px;
+    opacity: 0.3;
+}
+.c-name img
+{
+    width: 100%;
+    height: 350px;
+}
+.c-name
+{
+    position: relative;
+}
+.c-card
+{
+    display: flex;
+    position: absolute;
+    bottom: 0.8rem;
+    left: 0;
+    right: 0;
+}
+.c-card-l
+{
+    flex: 1;
+    color: black;
+    background-color: white;
+    padding: 0.4rem;
+}
+.c-card-l span
+{
+    color: black;
+    background-color: white;
+    font-weight: 600;
+    line-height: 0.6;
+}
+.c-card-l h3
+{
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 1.6rem;
+}
+.c-card-r
+{
+    flex: 1;
+    background-color: #18598F;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.c-card-r span
+{
+    color: white;
+    background-color: #18598F;
+    font-weight: 450;
+    line-height: 0.6;
+}
+.c-card-r img
+{
+    height: 40px;
+}
+
+.partners img
+{
+    width: 120px;
+    height: 60px;
+}
+
+@media screen and (max-width:750px)
+{
+    .partners
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

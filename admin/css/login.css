@@ -1,0 +1,35 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-top
+{
+    background-color:#E57A18!important;
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.submit-btn
+{
+    background-color: #1FC113!important;
+    color: white!important;
+    font-size: 1.2rem!important;
+}
+
+.footera
+{
+    background-color: #E57A18;
+    color: white;
+    padding: 0.6rem;
+}
+
+@media screen and (max-width: 770px) 
+{
+    .login-form form
+    {
+        width: 100%!important;
+    }
+}
